@@ -132,7 +132,12 @@ ul.points li { position: relative; padding-left: 26px; margin-bottom: 8px; color
 ul.points li::before { content: ""; position: absolute; left: 0; top: .8em; width: 12px; height: 1px; background: var(--gold); }
 
 /* Projects */
-.projects { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+/* .projects { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; } */
+.projects {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+}
 .card {
   background: var(--panel); border: 1px solid var(--line); padding: 40px;
   display: flex; flex-direction: column; gap: 24px;
@@ -355,59 +360,139 @@ footer a:hover { color: var(--bone); }
       </article>
     </div>
   </section>
+ 
+ <section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="projects">
 
-  <section id="projects">
-    <div class="wrap">
-      <h2>Projects</h2>
-      <div class="projects">
-        <article class="card">
-          <div class="card-head">
-            <h3>Hate Speech Detection using NLP</h3>
-            <p>Python · NLP · Machine learning · Twitter data</p>
-          </div>
-          <div>
-            <h4>Problem</h4>
-            <p class="block">Identifying hateful and offensive language in Twitter posts.</p>
-          </div>
-          <div>
-            <h4>Implementation</h4>
-            <ul class="points">
-              <li>Cleaned the dataset with tokenisation, stopword removal and text cleaning.</li>
-              <li>Converted text to features with TF-IDF and applied machine learning models for classification.</li>
-            </ul>
-          </div>
-          <div>
-            <h4>My contribution</h4>
-            <p class="block">Built the text-classification workflow from data preprocessing through to model application.</p>
-          </div>
-          <ul class="chips" aria-label="Technologies used"><li>Python</li><li>NLP</li><li>TF-IDF</li><li>Machine learning</li></ul>
-        </article>
+      <!-- PROJECT 1: VAYU POS -->
+      <article class="card">
+        <div class="card-head">
+          <h3>VAYU POS</h3>
+          <p>React · PostgreSQL · REST APIs · POS</p>
+        </div>
+        <div>
+          <h4>Overview</h4>
+          <p class="block">
+            A restaurant point-of-sale platform designed
+            to manage restaurant operations, billing,
+            inventory and kitchen workflows.
+          </p>
+        </div>
+        <div>
+          <h4>Key Features</h4>
+          <ul class="points">
+            <li>Restaurant billing, payments and order management.</li>
+            <li>Menu, inventory and recipe management.</li>
+            <li>Kitchen Order Tickets (KOT) and Kitchen Display System (KDS).</li>
+            <li>Staff management and role-based access control.</li>
+            <li>Receipt printing and table management.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>My Contribution</h4>
+          <p class="block">
+            Developing backend workflows, database
+            integration, API functionality and
+            frontend features.
+          </p>
+        </div>
+        <ul class="chips">
+          <li>React</li>
+          <li>PostgreSQL</li>
+          <li>REST APIs</li>
+          <li>RBAC</li>
+        </ul>
+        <p class="muted">Status: In Development</p>
+      </article>
 
-        <article class="card">
-          <div class="card-head">
-            <h3>Coffee Hub</h3>
-            <p>HTML · CSS · JavaScript · Firebase</p>
-          </div>
-          <div>
-            <h4>Problem</h4>
-            <p class="block">A web app where people can sign in, leave reviews of coffee places and save favourites.</p>
-          </div>
-          <div>
-            <h4>Implementation</h4>
-            <ul class="points">
-              <li>User authentication and a real-time database using Firebase.</li>
-              <li>Responsive layout built with HTML, CSS and JavaScript.</li>
-            </ul>
-          </div>
-          <div>
-            <h4>My contribution</h4>
-            <p class="block">Built the platform, including user authentication, reviews, favourites and the responsive layout.</p>
-          </div>
-          <ul class="chips" aria-label="Technologies used"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Firebase</li></ul>
-        </article>
-      </div>
+      <!-- PROJECT 2: AI DOCUMENT EXTRACTION -->
+      <article class="card">
+        <div class="card-head">
+          <h3>AI Document Extraction</h3>
+          <p>Python · OCR · NLP · SQL</p>
+        </div>
+        <div>
+          <h4>Overview</h4>
+          <p class="block">
+            An independent document-processing system
+            designed to extract structured information
+            from different document formats.
+          </p>
+        </div>
+        <div>
+          <h4>Key Features</h4>
+          <ul class="points">
+            <li>Extract text from uploaded documents using OCR.</li>
+            <li>Classify documents based on keywords and patterns.</li>
+            <li>Identify and extract relevant information.</li>
+            <li>Validate extracted fields using Python.</li>
+            <li>Generate structured JSON output.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Project Focus</h4>
+          <p class="block">
+            Building a reusable document-processing
+            architecture with classification,
+            extraction and validation components.
+          </p>
+        </div>
+        <ul class="chips">
+          <li>Python</li>
+          <li>OCR</li>
+          <li>Regex</li>
+          <li>SQL</li>
+          <li>JSON</li>
+        </ul>
+        <p class="muted">Status: In Development</p>
+      </article>
+
+      <!-- PROJECT 3: HATE SPEECH DETECTION -->
+      <article class="card">
+        <div class="card-head">
+          <h3>Hate Speech Detection</h3>
+          <p>Python · NLP · TF-IDF · Machine Learning</p>
+        </div>
+        <div>
+          <h4>Overview</h4>
+          <p class="block">
+            A machine learning project that identifies
+            hateful and offensive language in
+            social media text.
+          </p>
+        </div>
+        <div>
+          <h4>Implementation</h4>
+          <ul class="points">
+            <li>Preprocessed and cleaned Twitter text data.</li>
+            <li>Applied tokenization and stopword removal.</li>
+            <li>Converted text into numerical features using TF-IDF.</li>
+            <li>Applied classification algorithms including SVM and Decision Trees.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>My Contribution</h4>
+          <p class="block">
+            Developed the text-processing and
+            classification workflow using Python
+            and machine learning techniques.
+          </p>
+        </div>
+        <ul class="chips">
+          <li>Python</li>
+          <li>NLP</li>
+          <li>TF-IDF</li>
+          <li>SVM</li>
+          <li>Decision Trees</li>
+        </ul>
+        <p class="muted">Academic Project</p>
+      </article>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="education">
     <div class="wrap">
