@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uma Sanju Kambhampati | Python Backend Developer</title>
+<meta name="description" content="Python backend developer with experience in REST APIs, OCR document processing, SQL troubleshooting, Docker and voice-AI integration for healthcare and banking applications.">
+<meta property="og:title" content="Uma Sanju Kambhampati | Python Backend Developer">
+<meta property="og:description" content="Python backend developer building REST APIs, OCR document pipelines and voice-AI integrations.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e0e0d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%8D%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+:root {
+  --ink: #0e0e0d;
+  --panel: #161614;
+  --line: #2c2c28;
+  --bone: #ebe7dc;
+  --mute: #a09c8f;
+  --gold: #b9a86b;
+  --focus: #e3d28f;
+  --alert: #e4a091;
+  --cut: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%);
+  color-scheme: dark;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font: 400 17px/1.65 Barlow, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.skip {
+  position: absolute; left: 16px; top: -60px; z-index: 20; padding: 10px 16px;
+  background: var(--gold); color: var(--ink); font-weight: 600; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+.wrap { max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
+section { scroll-margin-top: 72px; padding: 112px 0; border-top: 1px solid var(--line); }
+h1, h2, h3, h4 { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-weight: 800; margin: 0; line-height: .9; }
+h2 { font-size: clamp(48px, 7vw, 84px); text-transform: uppercase; letter-spacing: -.005em; margin-bottom: 56px; }
+p { margin: 0 0 1em; }
+.muted { color: var(--mute); }
+
+/* Navigation */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: rgba(14, 14, 13, .92); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 60px; }
+.brand { font: 800 22px/1 "Barlow Condensed", sans-serif; text-decoration: none; text-transform: uppercase; letter-spacing: .02em; }
+.nav nav { min-width: 0; max-width: 100%; }
+.nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; min-width: 0; max-width: 100%; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav a { font-size: 15px; font-weight: 500; text-decoration: none; color: var(--mute); white-space: nowrap; transition: color .2s; }
+.nav a:hover { color: var(--bone); }
+
+/* Hero */
+.hero { border-top: 0; padding: 72px 0 96px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 56px; align-items: end; }
+.hero h1 { font-size: clamp(40px, 7.4vw, 108px); text-transform: uppercase; line-height: .84; letter-spacing: -.01em; }
+.hero h1 span { display: block; }
+.role { margin-top: 32px; font: 700 clamp(22px, 2.6vw, 30px)/1.2 "Barlow Condensed", sans-serif; color: var(--gold); text-transform: uppercase; letter-spacing: .03em; }
+.intro { max-width: 46ch; margin-top: 20px; color: var(--mute); font-size: 18px; }
+.tech { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 28px 0 0; padding: 0; }
+.tech li { padding: 5px 12px; border: 1px solid var(--line); font-size: 14px; color: #d6d2c6; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 12px 26px;
+  border: 1px solid var(--bone); background: transparent; color: var(--bone);
+  font: 600 16px Barlow, sans-serif; text-decoration: none; cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.btn:hover { background: var(--bone); color: var(--ink); }
+.btn.primary { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.btn.primary:hover { background: var(--bone); border-color: var(--bone); }
+.hero-photo {
+  position: relative; margin: 0; width: 100%; max-width: 440px; justify-self: end;
+  filter: drop-shadow(0 30px 44px rgba(0, 0, 0, .6));
+}
+.hero-photo::before {
+  content: ""; position: absolute; z-index: 0;
+  inset: 22px -22px -22px 22px;
+  background: rgba(185, 168, 107, .5);
+  clip-path: var(--cut);
+  transition: transform .6s cubic-bezier(.2, .7, .1, 1);
+}
+.hero-photo img {
+  position: relative; z-index: 1; display: block; width: 100%; height: auto;
+  clip-path: var(--cut);
+  filter: contrast(1.03);
+}
+.hero-photo:hover::before { transform: translate(-8px, 8px); }
+
+/* About */
+.split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; }
+.split h2 { margin-bottom: 0; }
+.prose { max-width: 62ch; font-size: 18px; }
+
+/* Skills */
+.skills { margin: 0; }
+.skill-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+.skill-row:last-child { border-bottom: 1px solid var(--line); }
+.skill-row dt { font: 700 26px/1.1 "Barlow Condensed", sans-serif; text-transform: uppercase; }
+.skill-row dd { margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.chips li {
+  padding: 6px 13px; border: 1px solid var(--line); font-size: 15px;
+  transition: border-color .2s, color .2s;
+}
+.chips li:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Experience */
+.job { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 56px; padding: 48px 0; border-top: 1px solid var(--line); }
+.job:first-of-type { border-top: 0; padding-top: 0; }
+.job h3 { font-size: 34px; }
+.job .meta { color: var(--mute); margin-top: 12px; }
+.job h4 { font: 600 19px/1.3 Barlow, sans-serif; color: var(--gold); margin: 0 0 10px; }
+.job h4:not(:first-child) { margin-top: 28px; }
+ul.points { list-style: none; margin: 0 0 4px; padding: 0; }
+ul.points li { position: relative; padding-left: 26px; margin-bottom: 8px; color: #d6d2c6; }
+ul.points li::before { content: ""; position: absolute; left: 0; top: .8em; width: 12px; height: 1px; background: var(--gold); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); padding: 40px;
+  display: flex; flex-direction: column; gap: 24px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
+  transition: border-color .25s, background .25s;
+}
+.card:hover { border-color: #4a4a43; background: #191916; }
+.card-head h3 { font-size: 38px; }
+.card-head p { color: var(--gold); font-size: 15px; margin: 10px 0 0; }
+.card h4 { font: 600 17px/1.3 Barlow, sans-serif; color: var(--gold); margin: 0 0 6px; }
+.card p.block { margin: 0; color: #d6d2c6; }
+.card ul.points { margin: 0; }
+.card .chips { margin-top: auto; }
+
+/* Education */
+.edu h3 { font-size: 34px; }
+.edu p { margin-top: 12px; color: var(--mute); }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 56px; }
+.contact-links { list-style: none; margin: 0; padding: 0; }
+.contact-links li { border-top: 1px solid var(--line); }
+.contact-links li:last-child { border-bottom: 1px solid var(--line); }
+.contact-links a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; text-decoration: none; word-break: break-word; }
+.contact-links .label { color: var(--mute); font-size: 15px; flex-shrink: 0; }
+.contact-links a:hover .value { color: var(--gold); }
+.value { transition: color .2s; text-align: right; }
+form { display: grid; gap: 22px; }
+.field label { display: block; font-size: 15px; color: var(--mute); margin-bottom: 6px; }
+.field input, .field textarea {
+  width: 100%; font: 400 17px Barlow, sans-serif; color: var(--bone);
+  background: transparent; border: 0; border-bottom: 1px solid #4a4a43; padding: 10px 0; border-radius: 0;
+  transition: border-color .2s;
+}
+.field textarea { min-height: 130px; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); box-shadow: 0 1px 0 var(--gold); }
+.field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.error { min-height: 1.3em; color: var(--alert); font-size: 14px; margin-top: 4px; }
+.form-note { color: var(--mute); font-size: 15px; margin: 0; }
+.form-status { color: var(--bone); font-size: 15px; min-height: 1.4em; margin: 0; }
+button[type="submit"] { justify-self: start; }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); padding: 32px 0 40px; font-size: 15px; color: var(--mute); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; }
+footer nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+footer a { text-decoration: none; transition: color .2s; }
+footer a:hover { color: var(--bone); }
+
+/* One entrance sequence on load (skipped for reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 span, .hero .role, .hero .intro, .hero .tech, .hero .actions, .hero-photo {
+    animation: rise .9s cubic-bezier(.2, .7, .1, 1) both;
+  }
+  .hero h1 span:nth-child(2) { animation-delay: .12s; }
+  .hero .role { animation-delay: .25s; }
+  .hero .intro { animation-delay: .32s; }
+  .hero .tech { animation-delay: .36s; }
+  .hero .actions { animation-delay: .42s; }
+  .hero-photo { animation-delay: .18s; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero .wrap, .split, .job, .contact { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .hero-photo { max-width: 420px; justify-self: start; }
+  .projects { grid-template-columns: minmax(0, 1fr); }
+  .skill-row { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  section { padding: 84px 0; }
+  .job h3 { font-size: 30px; }
+  .hero h1 { font-size: clamp(44px, 14vw, 120px); }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .nav .wrap { flex-direction: column; align-items: stretch; padding-block: 12px; min-height: 0; gap: 10px; }
+  .nav ul { gap: 18px; }
+  .hero { padding-top: 48px; }
+  .hero-photo::before { inset: 14px -14px -14px 14px; }
+  .card { padding: 26px; }
+  h2 { font-size: clamp(40px, 12vw, 64px); margin-bottom: 40px; }
+  .contact-links a { flex-direction: column; gap: 4px; }
+  .value { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Uma Sanju, back to top">Uma Sanju</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <h1><span>Kambhampati</span><span>Uma Sanju</span></h1>
+        <p class="role">Python Backend Developer</p>
+        <p class="intro">Python backend developer building REST APIs, OCR document-processing pipelines and voice-AI integrations for healthcare and banking applications.</p>
+        <ul class="tech" aria-label="Key technologies">
+          <li>Python</li><li>REST APIs</li><li>SQL</li><li>OCR pipelines</li><li>ElevenLabs</li><li>Docker</li><li>MySQL</li><li>MongoDB</li>
+        </ul>
+        <div class="actions">
+          <a class="btn primary" href="assets/Uma_Sanju_Kambhampati_Resume.pdf" download>Download resume (PDF)</a>
+          <a class="btn" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="assets/profile.jpg" width="485" height="800" alt="Portrait of Uma Sanju against a black background" decoding="async">
+      </figure>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap split">
+      <h2>About</h2>
+      <div class="prose">
+        <p>I am a Python backend developer. Since July 2025 I have worked at Algonox on backend services for healthcare and banking AI applications.</p>
+        <p>My work covers REST API development, OCR-based extraction pipelines that turn documents into structured data, voice AI integration with ElevenLabs, and deploying backend services with Docker. I also spend a lot of time on SQL queries and on troubleshooting backend issues in development and UAT environments.</p>
+        <p>Outside my professional work I have built a text-classification project for hate-speech detection and a Firebase web application. I am looking for Python backend and AI engineering roles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <div class="skill-row">
+          <dt>Languages</dt>
+          <dd><ul class="chips"><li>Python</li><li>JavaScript</li><li>SQL</li></ul></dd>
+        </div>
+        <div class="skill-row">
+          <dt>Backend</dt>
+          <dd><ul class="chips"><li>REST APIs</li><li>API integration</li><li>Backend services</li><li>Data processing</li><li>System integration</li></ul></dd>
+        </div>
+        <div class="skill-row">
+          <dt>Databases</dt>
+          <dd><ul class="chips"><li>MySQL</li><li>MongoDB</li><li>Firebase</li><li>Firestore</li></ul></dd>
+        </div>
+        <div class="skill-row">
+          <dt>AI and ML</dt>
+          <dd><ul class="chips"><li>OCR processing</li><li>Voice AI (ElevenLabs)</li><li>Machine learning support</li><li>Data validation</li><li>NLP and TF-IDF</li></ul></dd>
+        </div>
+        <div class="skill-row">
+          <dt>Tools and platforms</dt>
+          <dd><ul class="chips"><li>Docker</li><li>Git</li><li>GitHub</li><li>Postman</li><li>VS Code</li><li>Production debugging</li></ul></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+
+      <article class="job">
+        <header>
+          <h3>Software Developer, Backend (Python)</h3>
+          <p class="meta">Algonox<br>July 2025 to August 2026</p>
+        </header>
+        <div>
+          <h4>Medusind AI: healthcare AI platform</h4>
+          <ul class="points">
+            <li>Built OCR-based pipelines to extract structured data from medical forms and healthcare documents.</li>
+            <li>Processed and validated healthcare documents for downstream use.</li>
+            <li>Developed REST APIs that connect AI extraction output to backend services.</li>
+            <li>Wrote data validation and cleanup scripts to improve data quality.</li>
+            <li>Optimised SQL queries to improve data retrieval performance.</li>
+            <li>Containerised backend services with Docker.</li>
+            <li>Investigated and resolved production issues.</li>
+          </ul>
+
+          <h4>HDFC Banking AI: document extraction and ML training platform</h4>
+          <ul class="points">
+            <li>Built backend pipelines to extract structured data from banking documents.</li>
+            <li>Prepared and validated datasets used for machine learning model training.</li>
+            <li>Developed REST APIs that pass ML extraction outputs to backend systems.</li>
+            <li>Implemented preprocessing and validation logic for the extraction pipeline.</li>
+            <li>Troubleshot backend performance issues in development and UAT environments.</li>
+          </ul>
+
+          <h4>Sweet Hello: AI voice assistant for hospitals</h4>
+          <ul class="points">
+            <li>Built Python backend APIs for an AI voice assistant that handles hospital patient calls.</li>
+            <li>Integrated ElevenLabs voice AI for automated patient call interaction.</li>
+            <li>Designed call-flow logic to help patients choose an appointment or service.</li>
+            <li>Handled real-time voice interaction and backend system integration.</li>
+            <li>Deployed containerised services with Docker.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <header>
+          <h3>Python Development Intern</h3>
+          <p class="meta">PrepInsta</p>
+        </header>
+        <div>
+          <ul class="points">
+            <li>Wrote Python scripts for automation and data processing.</li>
+            <li>Practised backend logic, file handling and object-oriented programming.</li>
+            <li>Built small applications to strengthen backend development skills.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="projects">
+        <article class="card">
+          <div class="card-head">
+            <h3>Hate Speech Detection using NLP</h3>
+            <p>Python · NLP · Machine learning · Twitter data</p>
+          </div>
+          <div>
+            <h4>Problem</h4>
+            <p class="block">Identifying hateful and offensive language in Twitter posts.</p>
+          </div>
+          <div>
+            <h4>Implementation</h4>
+            <ul class="points">
+              <li>Cleaned the dataset with tokenisation, stopword removal and text cleaning.</li>
+              <li>Converted text to features with TF-IDF and applied machine learning models for classification.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>My contribution</h4>
+            <p class="block">Built the text-classification workflow from data preprocessing through to model application.</p>
+          </div>
+          <ul class="chips" aria-label="Technologies used"><li>Python</li><li>NLP</li><li>TF-IDF</li><li>Machine learning</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Coffee Hub</h3>
+            <p>HTML · CSS · JavaScript · Firebase</p>
+          </div>
+          <div>
+            <h4>Problem</h4>
+            <p class="block">A web app where people can sign in, leave reviews of coffee places and save favourites.</p>
+          </div>
+          <div>
+            <h4>Implementation</h4>
+            <ul class="points">
+              <li>User authentication and a real-time database using Firebase.</li>
+              <li>Responsive layout built with HTML, CSS and JavaScript.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>My contribution</h4>
+            <p class="block">Built the platform, including user authentication, reviews, favourites and the responsive layout.</p>
+          </div>
+          <ul class="chips" aria-label="Technologies used"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Firebase</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <article class="edu">
+        <h3>Bachelor of Technology, Computer Science and Engineering</h3>
+        <p>Kakinada Institute of Engineering and Technology</p>
+        <p>CGPA 7.35 / 10</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>Contact</h2>
+        <p class="muted">Open to Python backend and AI engineering roles. You can reach me directly or use the form.</p>
+        <ul class="contact-links">
+          <li><a href="mailto:sanjukambhampati5200231@gmail.com"><span class="label">Email</span><span class="value">sanjukambhampati5200231@gmail.com</span></a></li>
+          <li><a href="tel:+918328061985"><span class="label">Phone</span><span class="value">+91 83280 61985</span></a></li>
+          <li><a href="https://linkedin.com/in/uma-sanju" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span><span class="value">linkedin.com/in/uma-sanju</span></a></li>
+          <li><a href="https://github.com/Umasanjuk" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span><span class="value">github.com/Umasanjuk</span></a></li>
+        </ul>
+      </div>
+
+      <form id="contact-form" novalidate>
+        <p class="form-note">Sending this form opens your email app with the message filled in. This website does not send or store it. You still need to press Send in your email app.</p>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+          <div class="error" id="name-error" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+          <div class="error" id="email-error" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required aria-describedby="message-error"></textarea>
+          <div class="error" id="message-error" aria-live="polite"></div>
+        </div>
+        <button class="btn primary" type="submit">Open email app</button>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Kambhampati Uma Sanju. All rights reserved.</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://linkedin.com/in/uma-sanju" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/Umasanjuk" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById("contact-form");
+  var formStatus = document.getElementById("form-status");
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function setError(input, id, msg) {
+    document.getElementById(id).textContent = msg || "";
+    if (msg) input.setAttribute("aria-invalid", "true");
+    else input.removeAttribute("aria-invalid");
+    return !msg;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    formStatus.textContent = "";
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var message = form.message.value.trim();
+
+    var ok = true;
+    ok = setError(form.name, "name-error", name ? "" : "Enter your name.") && ok;
+    ok = setError(form.email, "email-error",
+      !email ? "Enter your email address." : (EMAIL_RE.test(email) ? "" : "Enter a valid email address, such as name@example.com.")) && ok;
+    ok = setError(form.message, "message-error",
+      message.length < 10 ? "Write at least 10 characters so I have some context." : "") && ok;
+
+    if (!ok) {
+      formStatus.textContent = "Please fix the highlighted fields.";
+      var firstBad = form.querySelector("[aria-invalid='true']");
+      if (firstBad) firstBad.focus();
+      return;
+    }
+
+    var subject = "Portfolio enquiry from " + name;
+    var body = message + "\n\nFrom: " + name + " <" + email + ">";
+    formStatus.textContent = "Your email app should open with the message ready. Nothing has been sent yet. Press Send in your email app to deliver it.";
+    window.location.href = "mailto:sanjukambhampati5200231@gmail.com?subject=" +
+      encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
